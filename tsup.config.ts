@@ -6,5 +6,5 @@ export default {
   minify: true,
   format: "esm",
   clean: true,
-  entry: ["index.ts"]
+  entry: ["src/index.ts"]
 } as Options;
