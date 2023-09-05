@@ -21,17 +21,17 @@
   "type": "module",
   "scripts": {
     "build": "tsup",
-    "lint": "tsc && rome ci .",
+    "lint": "tsc && biome ci .",
     "test": "node --no-warnings --loader tsx --test tests.ts",
     "prepare": "husky install",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.0.0",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/node": "^20.5.9",
     "husky": "^8.0.3",
-    "rome": "^12.1.3",
     "semantic-release": "^21.1.1",
     "tsup": "^7.2.0",
     "tsx": "^3.12.8",
