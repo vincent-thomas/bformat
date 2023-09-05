@@ -8,7 +8,8 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{github.ref}}
+permissions:
+  contents: read # for checkout
 
 jobs:
   test:
@@ -63,8 +64,15 @@ jobs:
     needs: [test]
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -102,6 +110,8 @@ jobs:
         run: |
           echo "Running pnpm install --frozen-lockfile"
           pnpm install --frozen-lockfile --ignore-scripts
+      - name: Verify the integrity of provenance attestations and registry signatures
+        run: npm audit signatures
       - run: pnpm run build
       - run: pnpm run semantic-release
         env:
