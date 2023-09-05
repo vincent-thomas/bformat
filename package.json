@@ -23,7 +23,7 @@
     "lint": "tsc",
     "test": "node --no-warnings --loader tsx --test tests/tests.spec.ts",
     "prepare": "husky install",
-    "semantic-release": "semantic-release --branches main"
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
