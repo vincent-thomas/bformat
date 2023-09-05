@@ -1,0 +1,40 @@
+{
+  "name": "bformat",
+  "version": "0.0.1-development",
+  "license": "MIT",
+  "homepage": "https://github.com/vincent-thomas/bformat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vincent-thomas/bformat"
+  },
+  "module": "./dist/index.mjs",
+  "author": {
+    "name": "Vincent Thomas",
+    "url": "https://things.v-thomas.com"
+  },
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "tsc",
+    "test": "node --no-warnings --loader tsx --test tests/index.ts",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release --branches main",
+    "commit": "cz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@types/node": "^20.5.9",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "semantic-release": "^21.1.1",
+    "tap-spec": "^5.0.0",
+    "tsup": "^7.2.0",
+    "tsx": "^3.12.8"
+  }
+}

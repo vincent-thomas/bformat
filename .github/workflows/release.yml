@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+concurrency: ${{ github.workflow }}-${{github.ref}}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm cache directory path
+        id: pnpm-cache-dir-path
+        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Print node/npm versions
+        id: versions
+        run: |
+          node_ver=$( node --version )
+          pnpm_ver=$( pnpm --version || true )
+
+          echo "Node: ${node_ver:1}"
+          echo "NPM: $( npm --version )"
+          if [[ $pnpm_ver != '' ]]; then echo "PNPM: $pnpm_ver"; fi
+
+          echo "node_version=${node_ver:1}" >> $GITHUB_OUTPUT
+
+      - name: Use the node_modules cache if available [pnpm]
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ steps.versions.outputs.node_version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ steps.versions.outputs.node_version }}-
+
+      - name: Install dependencies
+        run: |
+          echo "Running pnpm install --frozen-lockfile"
+          pnpm install --frozen-lockfile --ignore-scripts
+      
+      - run: pnpm run build
+      - run: pnpm run test
