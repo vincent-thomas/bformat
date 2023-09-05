@@ -31,10 +31,12 @@ jobs:
 
       - name: Get pnpm cache directory path
         id: pnpm-cache-dir-path
+        shell: bash
         run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Print node/npm versions
         id: versions
+        shell: bash
         run: |
           node_ver=$( node --version )
           pnpm_ver=$( pnpm --version || true )
@@ -54,6 +56,7 @@ jobs:
             ${{ runner.os }}-node-${{ steps.versions.outputs.node_version }}-
 
       - name: Install dependencies
+        shell: bash
         run: |
           echo "Running pnpm install --frozen-lockfile"
           pnpm install --frozen-lockfile --ignore-scripts
@@ -85,10 +88,12 @@ jobs:
 
       - name: Get pnpm cache directory path
         id: pnpm-cache-dir-path
+        shell: bash
         run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Print node/npm versions
         id: versions
+        shell: bash
         run: |
           node_ver=$( node --version )
           pnpm_ver=$( pnpm --version || true )
@@ -108,6 +113,7 @@ jobs:
             ${{ runner.os }}-node-${{ steps.versions.outputs.node_version }}-
 
       - name: Install dependencies
+        shell: bash
         run: |
           echo "Running pnpm install --frozen-lockfile"
           pnpm install --frozen-lockfile --ignore-scripts
