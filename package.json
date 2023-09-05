@@ -12,7 +12,7 @@
     "name": "Vincent Thomas",
     "url": "https://things.v-thomas.com"
   },
-  "types": "./dist/index.d.mts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "README.md"
