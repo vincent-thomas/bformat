@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsup",
     "lint": "tsc",
-    "test": "node --no-warnings --loader tsx --test tests/tests.spec.ts",
+    "test": "node --no-warnings --loader tsx --test tests.ts",
     "prepare": "husky install",
     "semantic-release": "semantic-release"
   },

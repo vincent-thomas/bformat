@@ -1,4 +1,4 @@
-import { toBuffer, fromBuffer, formatTo } from "../src/buffer";
+import { toBuffer, fromBuffer, formatTo } from "./src/buffer";
 import test from 'node:test';
 import assert from "node:assert";
 

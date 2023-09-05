@@ -10,5 +10,5 @@
     "jest.config.ts",
     "tests/**/*.test.ts",
     "tests/**/*.spec.ts",
-    "tests/**/*.d.ts", "src" ]
+    "tests/**/*.d.ts", "src", "tests.ts" ]
 }
