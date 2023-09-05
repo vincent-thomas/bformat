@@ -15,4 +15,3 @@ export const formatTo = (
   encodingFrom: Encoding,
   encodingTo: Encoding
 ) => Buffer.from(text, encodingFrom).toString(encodingTo);
-

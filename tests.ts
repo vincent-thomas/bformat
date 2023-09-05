@@ -1,5 +1,5 @@
 import { toBuffer, fromBuffer, formatTo } from "./src/buffer";
-import test from 'node:test';
+import test from "node:test";
 import assert from "node:assert";
 
 test("Should format string with the utf-8 encoding to a buffer", () => {
