@@ -9,11 +9,6 @@
       "node"
     ]
   },
-  "references": [
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
   "exclude": [
     "jest.config.ts",
     "src/**/*.spec.ts",

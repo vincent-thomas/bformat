@@ -8,6 +8,7 @@
     "url": "https://github.com/vincent-thomas/bformat"
   },
   "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "author": {
     "name": "Vincent Thomas",
     "url": "https://things.v-thomas.com"
