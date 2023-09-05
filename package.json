@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/vincent-thomas/bformat"
   },
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "author": {
     "name": "Vincent Thomas",
     "url": "https://things.v-thomas.com"
@@ -17,6 +17,7 @@
     "dist",
     "README.md"
   ],
+  "type": "module",
   "scripts": {
     "build": "tsup",
     "lint": "tsc",
