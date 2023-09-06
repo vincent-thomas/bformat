@@ -20,7 +20,7 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "tsup",
+    "build": "noder build .",
     "lint": "tsc && biome ci .",
     "test": "node --no-warnings --loader tsx --test tests.ts",
     "prepare": "husky install",
@@ -31,9 +31,9 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/node": "^20.5.9",
+    "@vincent-thomas/noder": "^0.0.3",
     "husky": "^8.0.3",
     "semantic-release": "^21.1.1",
-    "tsup": "^7.2.0",
     "tsx": "^3.12.8",
     "typescript": "^5.2.2"
   },
